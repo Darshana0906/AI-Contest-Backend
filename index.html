@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MedSaver AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+      margin: 15px 0;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .output {
+      margin-top: 20px;
+      text-align: left;
+      max-height: 200px;
+      overflow-y: auto;
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>💊 MedSaver AI</h1>
+  <p>Upload your prescription</p>
+
+  <input type="file" id="fileInput" />
+  <br>
+  <button onclick="uploadFile()">Upload</button>
+
+  <div class="output" id="output"></div>
+</div>
+
+<script>
+async function uploadFile() {
+  const fileInput = document.getElementById("fileInput");
+  const output = document.getElementById("output");
+
+  if (!fileInput.files.length) {
+    alert("Please select a file");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("file", fileInput.files[0]);
+
+  output.innerHTML = "⏳ Processing...";
+
+  try {
+    const response = await fetch("http://localhost:5000/upload", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    output.innerHTML = `
+      <b>Extracted Text:</b><br><br>
+      ${data.extracted_text || JSON.stringify(data)}
+    `;
+  } catch (error) {
+    output.innerHTML = "❌ Error connecting to backend";
+  }
+}
+</script>
+
+</body>
+</html>

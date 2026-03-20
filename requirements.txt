@@ -1,0 +1,6 @@
+flask
+pytesseract
+pillow
+flask-cors
+pdfplumber
+pdf2image
