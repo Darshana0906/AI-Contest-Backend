@@ -1,0 +1,421 @@
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f5f7fa;
+  color: #1a1a2e;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── App Layout ───────────────────────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.header {
+  background: #fff;
+  border-bottom: 0.5px solid #e0e4ea;
+  padding: 1rem 0;
+}
+
+.header-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: #1a6b4a;
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a6b4a;
+  letter-spacing: -0.3px;
+}
+
+.header-tagline {
+  font-size: 13px;
+  color: #6b7280;
+  border-left: 0.5px solid #e0e4ea;
+  padding-left: 1.5rem;
+}
+
+/* ── Upload Section ───────────────────────────────────────────────────────── */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dropzone {
+  border: 1.5px dashed #c8d0db;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dropzone:hover,
+.dropzone--has-file {
+  border-color: #1a6b4a;
+  background: #f0faf5;
+}
+
+.dropzone-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.upload-icon {
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+.dropzone-text {
+  font-size: 15px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.dropzone-subtext {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.preview-img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 0.5px solid #e0e4ea;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 13px;
+}
+
+.file-name {
+  color: #374151;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.btn-primary {
+  background: #1a6b4a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  width: 100%;
+}
+
+.btn-primary:hover:not(:disabled) { background: #155a3e; }
+.btn-primary:active:not(:disabled) { transform: scale(0.99); }
+.btn-primary:disabled { background: #9ca3af; cursor: not-allowed; }
+
+.btn-secondary {
+  background: #fff;
+  color: #374151;
+  border: 0.5px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover { background: #f9fafb; }
+
+/* ── Loading ──────────────────────────────────────────────────────────────── */
+.loading-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Error ────────────────────────────────────────────────────────────────── */
+.error-box {
+  background: #fef2f2;
+  border: 0.5px solid #fecaca;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 14px;
+  color: #991b1b;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.error-icon {
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── Results Section ──────────────────────────────────────────────────────── */
+.results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summary-bar {
+  background: #fff;
+  border: 0.5px solid #e0e4ea;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.summary-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-label {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a6b4a;
+}
+
+.summary-bar .btn-secondary {
+  margin-left: auto;
+}
+
+/* ── Drug Card ────────────────────────────────────────────────────────────── */
+.drug-card {
+  background: #fff;
+  border: 0.5px solid #e0e4ea;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.drug-header {
+  padding: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: background 0.15s;
+}
+
+.drug-header:hover { background: #fafafa; }
+
+.drug-info { flex: 1; }
+
+.drug-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.drug-brand {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.drug-salt {
+  font-size: 13px;
+  color: #1a6b4a;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.drug-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.drug-tag {
+  font-size: 12px;
+  background: #f3f4f6;
+  color: #4b5563;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.expand-icon {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+/* ── Match Badge ──────────────────────────────────────────────────────────── */
+.match-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.match-badge--exact   { background: #d1fae5; color: #065f46; }
+.match-badge--good    { background: #dbeafe; color: #1e40af; }
+.match-badge--partial { background: #fef3c7; color: #92400e; }
+.match-badge--none    { background: #fee2e2; color: #991b1b; }
+
+/* ── Warning ──────────────────────────────────────────────────────────────── */
+.warning-box {
+  margin: 0 1.25rem;
+  background: #fffbeb;
+  border: 0.5px solid #fcd34d;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 13px;
+  color: #92400e;
+}
+
+/* ── Generics Table ───────────────────────────────────────────────────────── */
+.generics-section {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 0.5px solid #f3f4f6;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+}
+
+.generics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+}
+
+.generics-table th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+  padding: 0 8px 8px 0;
+  border-bottom: 0.5px solid #e5e7eb;
+}
+
+.generics-table td {
+  padding: 10px 8px 10px 0;
+  border-bottom: 0.5px solid #f3f4f6;
+  color: #374151;
+  vertical-align: top;
+}
+
+.generics-table tr:last-child td { border-bottom: none; }
+
+.row-best td { background: #f0faf5; }
+.row-best td:first-child { border-radius: 6px 0 0 6px; }
+.row-best td:last-child  { border-radius: 0 6px 6px 0; }
+
+.best-badge {
+  display: block;
+  font-size: 10px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin-bottom: 3px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.price-cell {
+  font-weight: 600;
+  color: #1a6b4a;
+}
+
+.no-generics {
+  padding: 1rem 0;
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 12px;
+  color: #9ca3af;
+  border-top: 0.5px solid #e0e4ea;
+  background: #fff;
+}
