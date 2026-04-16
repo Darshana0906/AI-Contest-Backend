@@ -1,13 +1,4 @@
-"""
-LLM Extraction Chain
-----------------------
-Takes raw OCR text from a prescription and extracts
-structured drug information using Qwen 2.5 7B via Ollama.
 
-Usage:
-    from extraction_chain import extract_drugs
-    drugs = extract_drugs("Tab. Crocin 500mg x 5 days, Cap. Moxclav 625mg x 7 days")
-"""
 from dotenv import load_dotenv
 
 load_dotenv()
